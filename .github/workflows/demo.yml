@@ -25,6 +25,8 @@ jobs:
         run: npm ci
       - name: Build website
         run: npm run build
+        
+        # Ky e ban upload dhe e ban ZIP
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with: 
@@ -34,9 +36,19 @@ jobs:
           #path: |
             #dist
             #package.json
+            
   deploy:
     needs: build
     runs-on: ubuntu-latest
     steps:
+        # I want to download the artifact that I build early
+        # Duhet me i specifiku disa identifieres, perndryshe nuk din qka me ba download dhe unzip ktu
+      - name: Get Build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: dist-files
+        # Edhe e kqyrim a i kem marr krejt mir me nje LS komand
+      - name: Output contents
+        run: ls
       - name: Deploy
         run: echo "Deploying..."
