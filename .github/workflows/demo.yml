@@ -56,5 +56,7 @@ jobs:
         # Edhe e kqyrim a i kem marr krejt mir me nje LS komand
       - name: Output contents
         run: ls
+      - name: Output filename
+        run: echo "${{ needs.build.outputs.script-file }}"
       - name: Deploy
         run: echo "Deploying..."
