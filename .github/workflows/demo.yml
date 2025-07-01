@@ -9,6 +9,7 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v3
+        # Ne e komenton ket step vonohet
       - name: Cache dependencies
         uses: actions/cache@v3
         with:
@@ -20,12 +21,14 @@ jobs:
         run: npm run lint
       - name: Test code
         run: npm run test
+        
   build:
     needs: test
     runs-on: ubuntu-latest
     outputs:
       script-file: ${{steps.publish.outputs.script-file}}
     steps:
+        # Krejt njejt get, cach, install
       - name: Get code
         uses: actions/checkout@v3
       - name: Cache dependencies
@@ -37,6 +40,7 @@ jobs:
         run: npm ci
       - name: Build website
         run: npm run build
+        
         #Komanda speciale ne LINUX qe me e gjet javascrupt fajllin dhe me e publiku qe other jobs to use it
       - name: Publish JS filename
         id: publish
