@@ -45,3 +45,9 @@ Ideja e ktija sht, qe kur do qe ndrrohet qeky package-lock.json ,  bahen me ni h
 
 
 Npm update
+
+
+E stimulojm nje TEST Fail 
+Tek src/components/maincontect.test.jsx ne rreshtin
+E ndrrojm nga: expect(screen.getByTestId('help-area')).toBeInTheDocument();
+Ne problem te ri: expect(screen.getByTestId('help-area')).not.toBeInTheDocument();
